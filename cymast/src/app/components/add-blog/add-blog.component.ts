@@ -8,18 +8,33 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./add-blog.component.scss'],
 })
 export class AddBlogComponent implements OnInit {
-  name: string = '';
+  blogs: Blog[] = [];
+  id: number = 0;
+  title: string = '';
+  created: Date = new Date();
+  userId: number = 123;
+  posts: string[] = [];
 
   constructor(private service: BlogService) {}
 
   ngOnInit(): void {}
 
-  changeName(n: string): void {
-    this.name = n;
+  changeName(t: string): void {
+    this.title = t;
   }
-  createBlog(): void {
-    let b = new Blog(this.name);
 
-    this.service.addBlog(b);
+  createBlog(): void {
+    console.log(this.created);
+    let b = new Blog(
+      this.id,
+      this.title,
+      this.created,
+      this.userId,
+      this.posts
+    );
+
+    this.service.addBlog(b).subscribe((newBlog) => {
+      this.service.getBlogs();
+    });
   }
 }

@@ -9,11 +9,13 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class BlogsComponent implements OnInit {
   blogs: Blog[] = [];
+
   constructor(private service: BlogService) {}
 
   ngOnInit(): void {
-    this.service.getBlogs().subscribe((blogs: Blog[]) => {
-      this.blogs = blogs;
+    this.service.blogs$.subscribe((data: Blog[]) => {
+      this.blogs = data;
     });
+    this.service.getBlogs();
   }
 }
