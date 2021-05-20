@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Blog } from '../models/Blog';
-import { ApiResponse } from '../models/ApiResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +32,11 @@ export class BlogService {
         console.log(response);
         return response;
       });
+  }
+  deleteBlog(id: number): Observable<Blog> {
+    console.log(id);
+    return this.http.delete<Blog>(
+      `https://mi-blogs.azurewebsites.net/api/Blogs/${id}`
+    );
   }
 }

@@ -1,3 +1,5 @@
 <ul>
-  <li *ngFor="let b of blogs">{{ b.title }}</li>
+  <li *ngFor="let b of blogs; let i = index">
+    {{ b.title }} - <button (click)="deleteBlog(b.id)">Delete</button>
+  </li>
 </ul>
