@@ -1,2 +1,2 @@
-<input type="text" #title (keyup)="changeName(title.value)" />
+<input value="{{ title }}" type="text" #name (keyup)="changeName(name.value)" />
 <button (click)="editBlog()">Done</button>

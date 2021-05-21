@@ -10,7 +10,6 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./edit-blog.component.scss'],
 })
 export class EditBlogComponent implements OnInit {
-  blogs: Blog[] = [];
   title: string = '';
   created: Date = new Date();
   userId: number = 123;
@@ -32,6 +31,7 @@ export class EditBlogComponent implements OnInit {
         this.userId = data.userId;
         this.posts = data.posts;
         this.blogId = data.id;
+        console.log(this.title);
       });
     });
   }
