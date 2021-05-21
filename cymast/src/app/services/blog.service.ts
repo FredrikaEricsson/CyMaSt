@@ -19,22 +19,31 @@ export class BlogService {
       .get<Blog[]>('https://mi-blogs.azurewebsites.net/api/Blogs/user/123')
       .subscribe((data: Blog[]) => {
         this.blogs.next(data);
-        console.log(data);
       });
   }
 
+  getBlog(id: number): Observable<Blog> {
+    return this.http.get<Blog>(
+      `https://mi-blogs.azurewebsites.net/api/Blogs/${id}`
+    );
+  }
+
   addBlog(newBlog: Blog): Observable<Blog> {
-    // this.blogs.push(newBlog);
-    console.log(newBlog);
     return this.http
       .post<Blog>('https://mi-blogs.azurewebsites.net/api/Blogs', newBlog)
       .pipe((response) => {
-        console.log(response);
         return response;
       });
   }
+
+  editBlog(id: number, updatedBlog: Blog): Observable<Blog> {
+    return this.http.put<Blog>(
+      `https://mi-blogs.azurewebsites.net/api/Blogs/${id}`,
+      updatedBlog
+    );
+  }
+
   deleteBlog(id: number): Observable<Blog> {
-    console.log(id);
     return this.http.delete<Blog>(
       `https://mi-blogs.azurewebsites.net/api/Blogs/${id}`
     );

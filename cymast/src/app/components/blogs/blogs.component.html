@@ -1,5 +1,6 @@
 <ul>
   <li *ngFor="let b of blogs; let i = index">
     {{ b.title }} - <button (click)="deleteBlog(b.id)">Delete</button>
+    <a [routerLink]="['/edit-blog', b.id]" routerLinkActive="active">Edit</a>
   </li>
 </ul>

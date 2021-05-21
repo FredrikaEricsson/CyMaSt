@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 
 import { BlogsComponent } from './components/blogs/blogs.component';
 import { AddBlogComponent } from './components/add-blog/add-blog.component';
+import { EditBlogComponent } from './components/edit-blog/edit-blog.component';
 
 @NgModule({
-  declarations: [AppComponent, BlogsComponent, AddBlogComponent],
+  declarations: [AppComponent, BlogsComponent, AddBlogComponent, EditBlogComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
