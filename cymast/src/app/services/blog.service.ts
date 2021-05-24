@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Blog } from '../models/Blog';
+import { Post } from '../models/Post';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class BlogService {
     // return of(this.blogs);
 
     this.http
-      .get<Blog[]>('https://mi-blogs.azurewebsites.net/api/Blogs/user/123')
+      .get<Blog[]>('https://mi-blogs.azurewebsites.net/api/Blogs/user/930404')
       .subscribe((data: Blog[]) => {
         this.blogs.next(data);
       });
@@ -29,11 +30,10 @@ export class BlogService {
   }
 
   addBlog(newBlog: Blog): Observable<Blog> {
-    return this.http
-      .post<Blog>('https://mi-blogs.azurewebsites.net/api/Blogs', newBlog)
-      .pipe((response) => {
-        return response;
-      });
+    return this.http.post<Blog>(
+      'https://mi-blogs.azurewebsites.net/api/Blogs',
+      newBlog
+    );
   }
 
   editBlog(id: number, updatedBlog: Blog): Observable<Blog> {
@@ -46,6 +46,12 @@ export class BlogService {
   deleteBlog(id: number): Observable<Blog> {
     return this.http.delete<Blog>(
       `https://mi-blogs.azurewebsites.net/api/Blogs/${id}`
+    );
+  }
+  createPost(newPost: Post): Observable<Post> {
+    return this.http.post<Post>(
+      'https://mi-blogs.azurewebsites.net/api/Posts',
+      newPost
     );
   }
 }

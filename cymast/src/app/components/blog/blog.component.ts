@@ -6,17 +6,16 @@ import { Post } from 'src/app/models/Post';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
-  selector: 'app-edit-blog',
-  templateUrl: './edit-blog.component.html',
-  styleUrls: ['./edit-blog.component.scss'],
+  selector: 'app-blog',
+  templateUrl: './blog.component.html',
+  styleUrls: ['./blog.component.scss'],
 })
-export class EditBlogComponent implements OnInit {
+export class BlogComponent implements OnInit {
   title: string = '';
   created: Date = new Date();
   userId: number = 930404;
   posts: Post[] = [];
   blogId: number = 0;
-
   constructor(
     private route: ActivatedRoute,
     private service: BlogService,
@@ -32,25 +31,7 @@ export class EditBlogComponent implements OnInit {
         this.userId = data.userId;
         this.posts = data.posts;
         this.blogId = data.id;
-        console.log(this.title);
       });
-    });
-  }
-
-  changeName(t: string): void {
-    this.title = t;
-  }
-
-  editBlog(): void {
-    let updatedBlog = new Blog(
-      this.blogId,
-      this.title,
-      this.created,
-      this.userId,
-      this.posts
-    );
-    this.service.editBlog(this.blogId, updatedBlog).subscribe((data) => {
-      this.router.navigate(['/']);
     });
   }
 }

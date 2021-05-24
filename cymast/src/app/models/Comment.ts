@@ -1,11 +1,15 @@
-export class Comment {
-  name: string;
-  time: Date;
-  comment: string;
+import { Post } from './Post';
 
-  constructor(name: string, time: Date, comment: string) {
-    this.name = name;
-    this.time = time;
-    this.comment = comment;
+export class Comment {
+  id: number;
+  content: string;
+  postId: number;
+  post: Post;
+
+  constructor(id: number, content: string, postId: number, post: Post) {
+    this.id = id;
+    this.content = content;
+    this.postId = postId;
+    this.post = post;
   }
 }
