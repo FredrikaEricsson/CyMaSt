@@ -18,8 +18,8 @@ export class AddPostComponent implements OnInit {
   content: string = '';
   created: Date = new Date();
   modified: Date = new Date();
-  blogId: number = 0;
-  blog: Blog = new Blog(0, '', new Date(), 930404, []);
+  blogId: number;
+  blog: Blog;
 
   comments: Comment[] = [];
 
@@ -61,7 +61,7 @@ export class AddPostComponent implements OnInit {
       this.comments
     );
     this.service.createPost(p).subscribe((newPost) => {
-      console.log(newPost);
+      this.router.navigate(['blog', this.blogId]);
     });
   }
 }

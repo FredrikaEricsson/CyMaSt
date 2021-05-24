@@ -14,8 +14,6 @@ export class BlogService {
   constructor(private http: HttpClient) {}
 
   getBlogs(): void {
-    // return of(this.blogs);
-
     this.http
       .get<Blog[]>('https://mi-blogs.azurewebsites.net/api/Blogs/user/930404')
       .subscribe((data: Blog[]) => {

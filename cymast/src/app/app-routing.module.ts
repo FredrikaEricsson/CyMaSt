@@ -10,10 +10,12 @@ const routes: Routes = [
   {
     path: 'blog/:blogId/new-post',
     component: AddPostComponent,
+    pathMatch: 'full',
   },
   {
     path: 'blog/:id',
     component: BlogComponent,
+    pathMatch: 'full',
   },
   {
     path: 'edit-blog/:id',
