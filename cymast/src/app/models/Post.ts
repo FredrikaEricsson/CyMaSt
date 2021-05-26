@@ -1,4 +1,6 @@
+import { from } from 'rxjs';
 import { Blog } from './Blog';
+import { Comment } from './Comment';
 
 export class Post {
   id: number;
@@ -7,7 +9,6 @@ export class Post {
   created: Date;
   modified: Date;
   blogId: number;
-
   comments: Comment[];
 
   constructor(
@@ -17,7 +18,6 @@ export class Post {
     created: Date,
     modified: Date,
     blogId: number,
-
     comments: Comment[]
   ) {
     this.id = id;

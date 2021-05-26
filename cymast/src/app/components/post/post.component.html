@@ -2,7 +2,9 @@
 <p>{{ post.content }}</p>
 <span>{{ post.created }}</span>
 <span>{{ post.modified }}</span>
-<p>{{ post.comments }}</p>
+<a [routerLink]="['./post', post.id, 'comments']" routerLinkActive="active"
+  >Comments</a
+>
 
 <a [routerLink]="['./edit-post', post.id]" routerLinkActive="active">Edit</a>
-<button (click)="deletePost(post.id)"></button>
+<button (click)="deletePost(post.id)">Delete</button>

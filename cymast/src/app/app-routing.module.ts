@@ -7,8 +7,14 @@ import { BlogComponent } from './components/blog/blog.component';
 import { BlogsComponent } from './components/blogs/blogs.component';
 import { EditBlogComponent } from './components/edit-blog/edit-blog.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 const routes: Routes = [
+  {
+    path: 'blog/:blogId/post/:postId/comments',
+    component: CommentsComponent,
+    pathMatch: 'full',
+  },
   {
     path: 'blog/:blogId/edit-post/:id',
     component: EditPostComponent,

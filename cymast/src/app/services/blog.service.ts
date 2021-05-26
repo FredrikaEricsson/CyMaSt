@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Blog } from '../models/Blog';
 import { Post } from '../models/Post';
+import { Comment } from '../models/Comment';
 
 @Injectable({
   providedIn: 'root',
@@ -67,6 +68,13 @@ export class BlogService {
   deletePost(id: number): Observable<Post> {
     return this.http.delete<Post>(
       `https://mi-blogs.azurewebsites.net/api/Posts/${id}`
+    );
+  }
+
+  addComment(newComment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(
+      `https://mi-blogs.azurewebsites.net/api/Comments`,
+      newComment
     );
   }
 }

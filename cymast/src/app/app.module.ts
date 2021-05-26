@@ -13,6 +13,9 @@ import { BlogComponent } from './components/blog/blog.component';
 import { PostComponent } from './components/post/post.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
     PostComponent,
     AddPostComponent,
     EditPostComponent,
+    CommentsComponent,
+    CommentComponent,
+    AddCommentComponent,
   ],
   imports: [
     BrowserModule,

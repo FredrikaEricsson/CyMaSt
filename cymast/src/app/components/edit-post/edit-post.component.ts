@@ -10,6 +10,7 @@ import {
 
 import { Blog } from 'src/app/models/Blog';
 import { Post } from 'src/app/models/Post';
+import { Comment } from 'src/app/models/Comment';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -27,8 +28,8 @@ export class EditPostComponent implements OnInit {
   comments: Comment[] = [];
 
   postForm = this.fb.group({
-    editedTitle: [''],
-    editedContent: [''],
+    title: [''],
+    content: [''],
   });
   constructor(
     private route: ActivatedRoute,
@@ -41,7 +42,10 @@ export class EditPostComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.id = parseInt(params.get('id'));
       this.service.getPost(this.id).subscribe((data) => {
-        this.title = data.title;
+        this.postForm.setValue({
+          title: data.title,
+          content: data.content,
+        });
         this.content = data.content;
         this.created = data.created;
         this.blogId = data.blogId;
@@ -51,22 +55,10 @@ export class EditPostComponent implements OnInit {
   }
 
   editPost(): void {
-    if (this.postForm.value.editedTitle === '') {
-      this.title;
-    } else {
-      this.title = this.postForm.value.editedTitle;
-    }
-
-    if (this.postForm.value.editedContent === '') {
-      this.content;
-    } else {
-      this.content = this.postForm.value.editedContent;
-    }
-
     let updatedPost = new Post(
       this.id,
-      this.title,
-      this.content,
+      (this.title = this.postForm.value.title),
+      (this.content = this.postForm.value.content),
       this.created,
       this.modified,
       this.blogId,

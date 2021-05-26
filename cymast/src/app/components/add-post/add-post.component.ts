@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Blog } from 'src/app/models/Blog';
 import { Post } from 'src/app/models/Post';
+import { Comment } from 'src/app/models/Comment';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({

@@ -1,0 +1,9 @@
+<h3>{{ title }}</h3>
+<p>{{ content }}</p>
+<span>{{ created }}</span>
+<span>{{ modified }}</span>
+
+<div *ngFor="let c of comments; let i = index">
+  <app-comment [comment]="c" [index]="i"> </app-comment>
+</div>
+<app-add-comment [postId]="id"></app-add-comment>
