@@ -1,3 +1,5 @@
-<input type="text" #title (keyup)="changeTitle(title.value)" />
-<input type="text" #content (keyup)="changeContent(content.value)" />
-<button (click)="createPost()">Skapa</button>
+<form [formGroup]="postForm" (ngSubmit)="createPost()">
+  <input type="text" placeholder="Titel" formControlName="title" />
+  <input type="text" placeholder="Innehåll" formControlName="content" />
+  <button type="submit">Skapa</button>
+</form>

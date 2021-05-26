@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { from } from 'rxjs';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -19,37 +20,29 @@ export class AddPostComponent implements OnInit {
   created: Date = new Date();
   modified: Date = new Date();
   blogId: number;
-  blog: Blog;
-
   comments: Comment[] = [];
+
+  postForm = this.fb.group({
+    title: [''],
+    content: [''],
+  });
 
   constructor(
     private route: ActivatedRoute,
     private service: BlogService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.blogId = parseInt(params.get('blogId'));
-      this.service.getBlog(this.blogId).subscribe((data) => {
-        this.blogId = data.id;
-        this.blog = data;
-        console.log(this.blog);
-      });
     });
-  }
-  changeTitle(t: string): void {
-    this.title = t;
-    console.log(this.title);
-  }
-
-  changeContent(c: string): void {
-    this.content = c;
-    console.log(this.content);
   }
 
   createPost(): void {
+    this.title = this.postForm.value.title;
+    this.content = this.postForm.value.content;
     let p = new Post(
       this.id,
       this.title,
@@ -57,11 +50,11 @@ export class AddPostComponent implements OnInit {
       this.created,
       this.modified,
       this.blogId,
-      this.blog,
       this.comments
     );
     this.service.createPost(p).subscribe((newPost) => {
       this.router.navigate(['blog', this.blogId]);
+      console.log(newPost);
     });
   }
 }

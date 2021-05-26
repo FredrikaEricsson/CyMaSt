@@ -1,0 +1,5 @@
+<form [formGroup]="postForm" (ngSubmit)="editPost()">
+  <input type="text" value="{{ title }}" formControlName="editedTitle" />
+  <input type="text" value="{{ content }}" formControlName="editedContent" />
+  <button type="submit">Skapa</button>
+</form>

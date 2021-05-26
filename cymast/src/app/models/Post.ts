@@ -7,7 +7,7 @@ export class Post {
   created: Date;
   modified: Date;
   blogId: number;
-  blog: Blog;
+
   comments: Comment[];
 
   constructor(
@@ -17,7 +17,7 @@ export class Post {
     created: Date,
     modified: Date,
     blogId: number,
-    blog: Blog,
+
     comments: Comment[]
   ) {
     this.id = id;
@@ -26,7 +26,7 @@ export class Post {
     this.created = created;
     this.modified = modified;
     this.blogId = blogId;
-    this.blog = blog;
+
     this.comments = comments;
   }
 }

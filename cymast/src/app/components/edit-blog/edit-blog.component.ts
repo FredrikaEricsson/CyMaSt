@@ -26,6 +26,7 @@ export class EditBlogComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.blogId = parseInt(params.get('id'));
+
       this.service.getBlog(this.blogId).subscribe((data) => {
         this.title = data.title;
         this.created = data.created;

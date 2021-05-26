@@ -1,5 +1,6 @@
 <a [routerLink]="['/blog', blogId, 'new-post']" routerLinkActive="active"
   >New Post</a
 >
-
-<app-post *ngFor="let p of posts" [post]="p"></app-post>
+<div *ngFor="let p of posts; let i = index">
+  <app-post [post]="p" [index]="i"> </app-post>
+</div>

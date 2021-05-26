@@ -3,3 +3,6 @@
 <span>{{ post.created }}</span>
 <span>{{ post.modified }}</span>
 <p>{{ post.comments }}</p>
+
+<a [routerLink]="['./edit-post', post.id]" routerLinkActive="active">Edit</a>
+<button (click)="deletePost(post.id)"></button>
