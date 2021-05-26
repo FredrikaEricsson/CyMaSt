@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PostComponent implements OnInit {
   @Input() post: Post;
+
   index: number;
 
   constructor(private service: BlogService, private router: Router) {}
@@ -18,7 +19,7 @@ export class PostComponent implements OnInit {
 
   deletePost(id): void {
     this.service.deletePost(id).subscribe((data) => {
-      console.log(data);
+      window.location.reload();
     });
   }
 }

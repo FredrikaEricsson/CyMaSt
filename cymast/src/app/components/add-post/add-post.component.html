@@ -1,5 +1,8 @@
-<form [formGroup]="postForm" (ngSubmit)="createPost()">
+<h2>Write a new post!</h2>
+
+<form [formGroup]="addPostForm" (ngSubmit)="createPost()">
   <input type="text" placeholder="Titel" formControlName="title" />
   <input type="text" placeholder="Innehåll" formControlName="content" />
-  <button type="submit">Skapa</button>
+  <button type="submit" [disabled]="!addPostForm.valid">Add</button>
 </form>
+<a routerLink="..">Back</a>

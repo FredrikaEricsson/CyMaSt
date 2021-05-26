@@ -1,2 +1,6 @@
-<input type="text" #title (keyup)="changeName(title.value)" />
-<button (click)="createBlog()">Skapa</button>
+<h3>Create a new blog</h3>
+<form [formGroup]="addBlogForm" (ngSubmit)="createBlog()">
+  <input type="text" placeholder="Titel" formControlName="title" />
+  <button type="submit" [disabled]="!addBlogForm.valid">Add</button>
+</form>
+<a routerLink="..">Back</a>

@@ -1,4 +1,5 @@
-<form [formGroup]="commentForm" (ngSubmit)="createComment()">
+<h2>Write a comment!</h2>
+<form [formGroup]="addCommentForm" (ngSubmit)="createComment()">
   <input type="text" placeholder="Innehåll" formControlName="content" />
-  <button type="submit">Skapa</button>
+  <button type="submit" [disabled]="!addCommentForm.valid">Add</button>
 </form>

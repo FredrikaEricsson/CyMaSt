@@ -3,6 +3,13 @@ import { Blog } from 'src/app/models/Blog';
 import { BlogService } from 'src/app/services/blog.service';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/models/Post';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-add-blog',
@@ -12,21 +19,24 @@ import { Post } from 'src/app/models/Post';
 export class AddBlogComponent implements OnInit {
   blogs: Blog[] = [];
   id: number = 0;
-  title: string = '';
+  title: string;
   created: Date = new Date();
   userId: number = 930404;
   posts: Post[] = [];
 
-  constructor(private service: BlogService, private router: Router) {}
+  addBlogForm = this.fb.group({
+    title: ['', Validators.required],
+  });
+  constructor(
+    private service: BlogService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {}
 
-  changeName(t: string): void {
-    this.title = t;
-  }
-
   createBlog(): void {
-    console.log(this.created);
+    this.title = this.addBlogForm.value.title;
     let b = new Blog(
       this.id,
       this.title,

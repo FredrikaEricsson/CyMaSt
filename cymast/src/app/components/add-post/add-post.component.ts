@@ -1,6 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { from } from 'rxjs';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -23,9 +29,9 @@ export class AddPostComponent implements OnInit {
   blogId: number;
   comments: Comment[] = [];
 
-  postForm = this.fb.group({
-    title: [''],
-    content: [''],
+  addPostForm = this.fb.group({
+    title: ['', Validators.required],
+    content: ['', Validators.required],
   });
 
   constructor(
@@ -42,8 +48,8 @@ export class AddPostComponent implements OnInit {
   }
 
   createPost(): void {
-    this.title = this.postForm.value.title;
-    this.content = this.postForm.value.content;
+    this.title = this.addPostForm.value.title;
+    this.content = this.addPostForm.value.content;
     let p = new Post(
       this.id,
       this.title,

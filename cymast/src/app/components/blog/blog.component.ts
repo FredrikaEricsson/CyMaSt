@@ -25,12 +25,12 @@ export class BlogComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.blogId = parseInt(params.get('id'));
-      this.service.getBlog(this.blogId).subscribe((data) => {
-        this.title = data.title;
-        this.created = data.created;
-        this.userId = data.userId;
-        this.posts = data.posts;
-        this.blogId = data.id;
+      this.service.getBlog(this.blogId).subscribe((blog) => {
+        this.title = blog.title;
+        this.created = blog.created;
+        this.userId = blog.userId;
+        this.posts = blog.posts;
+        this.blogId = blog.id;
       });
     });
   }

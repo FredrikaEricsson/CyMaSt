@@ -1,7 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Blog } from 'src/app/models/Blog';
 import { Post } from 'src/app/models/Post';
 import { Comment } from 'src/app/models/Comment';
@@ -18,8 +24,8 @@ export class AddCommentComponent implements OnInit {
 
   @Input() postId: number;
 
-  commentForm = this.fb.group({
-    content: [''],
+  addCommentForm = this.fb.group({
+    content: ['', Validators.required],
   });
   constructor(private fb: FormBuilder, private service: BlogService) {}
 
@@ -27,10 +33,10 @@ export class AddCommentComponent implements OnInit {
     console.log(this.postId);
   }
   createComment(): void {
-    this.content = this.commentForm.value.content;
+    this.content = this.addCommentForm.value.content;
     let c = new Comment(this.id, this.content, this.postId);
     console.log(c);
-    this.service.addComment(c).subscribe((data) => {
+    this.service.addComment(c).subscribe((comment) => {
       window.location.reload();
     });
   }

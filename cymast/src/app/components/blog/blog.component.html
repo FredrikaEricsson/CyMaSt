@@ -1,6 +1,9 @@
+<h2>{{ title }}</h2>
+
 <a [routerLink]="['/blog', blogId, 'new-post']" routerLinkActive="active"
   >New Post</a
 >
 <div *ngFor="let p of posts; let i = index">
   <app-post [post]="p" [index]="i"> </app-post>
 </div>
+<a routerLink="/">Back</a>

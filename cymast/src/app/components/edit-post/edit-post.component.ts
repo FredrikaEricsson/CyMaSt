@@ -27,7 +27,7 @@ export class EditPostComponent implements OnInit {
   blogId: number;
   comments: Comment[] = [];
 
-  postForm = this.fb.group({
+  editPostForm = this.fb.group({
     title: [''],
     content: [''],
   });
@@ -41,15 +41,15 @@ export class EditPostComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.id = parseInt(params.get('id'));
-      this.service.getPost(this.id).subscribe((data) => {
-        this.postForm.setValue({
-          title: data.title,
-          content: data.content,
+      this.service.getPost(this.id).subscribe((post) => {
+        this.editPostForm.setValue({
+          title: post.title,
+          content: post.content,
         });
-        this.content = data.content;
-        this.created = data.created;
-        this.blogId = data.blogId;
-        this.comments = data.comments;
+        this.content = post.content;
+        this.created = post.created;
+        this.blogId = post.blogId;
+        this.comments = post.comments;
       });
     });
   }
@@ -57,14 +57,14 @@ export class EditPostComponent implements OnInit {
   editPost(): void {
     let updatedPost = new Post(
       this.id,
-      (this.title = this.postForm.value.title),
-      (this.content = this.postForm.value.content),
+      (this.title = this.editPostForm.value.title),
+      (this.content = this.editPostForm.value.content),
       this.created,
       this.modified,
       this.blogId,
       this.comments
     );
-    this.service.editPost(this.id, updatedPost).subscribe((data) => {
+    this.service.editPost(this.id, updatedPost).subscribe((editedPost) => {
       this.router.navigate(['blog', this.blogId]);
     });
   }

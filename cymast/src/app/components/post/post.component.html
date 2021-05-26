@@ -2,9 +2,11 @@
 <p>{{ post.content }}</p>
 <span>{{ post.created }}</span>
 <span>{{ post.modified }}</span>
-<a [routerLink]="['./post', post.id, 'comments']" routerLinkActive="active"
-  >Comments</a
->
+<div *ngFor="let c of post.comments">
+  <a [routerLink]="['./post', post.id, 'comments']" routerLinkActive="active"
+    >Comments({{ post.comments.length }})</a
+  >
+</div>
 
 <a [routerLink]="['./edit-post', post.id]" routerLinkActive="active">Edit</a>
 <button (click)="deletePost(post.id)">Delete</button>

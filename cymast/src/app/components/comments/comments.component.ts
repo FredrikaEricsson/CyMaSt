@@ -31,13 +31,13 @@ export class CommentsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.id = parseInt(params.get('postId'));
-      this.service.getPost(this.id).subscribe((data) => {
-        this.title = data.title;
-        this.content = data.content;
-        this.created = data.created;
-        this.modified = data.modified;
-        this.blogId = data.blogId;
-        this.comments = data.comments;
+      this.service.getPost(this.id).subscribe((post) => {
+        this.title = post.title;
+        this.content = post.content;
+        this.created = post.created;
+        this.modified = post.modified;
+        this.blogId = post.blogId;
+        this.comments = post.comments;
       });
     });
   }

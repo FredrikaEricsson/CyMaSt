@@ -1,5 +1,9 @@
-<form [formGroup]="postForm" (ngSubmit)="editPost()">
+<h3>Edit post</h3>
+
+<form [formGroup]="editPostForm" (ngSubmit)="editPost()">
   <input type="text" formControlName="title" />
   <input type="text" formControlName="content" />
-  <button type="submit">Skapa</button>
+  <button type="Save">Save</button>
 </form>
+
+<a routerLink="..">Back</a>

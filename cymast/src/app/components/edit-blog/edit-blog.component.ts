@@ -4,6 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from 'src/app/models/Blog';
 import { Post } from 'src/app/models/Post';
 import { BlogService } from 'src/app/services/blog.service';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-blog',
@@ -16,41 +23,43 @@ export class EditBlogComponent implements OnInit {
   userId: number = 930404;
   posts: Post[] = [];
   blogId: number = 0;
-
+  editBlogForm = this.fb.group({
+    title: [''],
+  });
   constructor(
     private route: ActivatedRoute,
     private service: BlogService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.blogId = parseInt(params.get('id'));
 
-      this.service.getBlog(this.blogId).subscribe((data) => {
-        this.title = data.title;
-        this.created = data.created;
-        this.userId = data.userId;
-        this.posts = data.posts;
-        this.blogId = data.id;
+      this.service.getBlog(this.blogId).subscribe((blog) => {
+        this.editBlogForm.setValue({
+          title: blog.title,
+        });
+
+        this.created = blog.created;
+        this.userId = blog.userId;
+        this.posts = blog.posts;
+        this.blogId = blog.id;
         console.log(this.title);
       });
     });
   }
 
-  changeName(t: string): void {
-    this.title = t;
-  }
-
   editBlog(): void {
     let updatedBlog = new Blog(
       this.blogId,
-      this.title,
+      (this.title = this.editBlogForm.value.title),
       this.created,
       this.userId,
       this.posts
     );
-    this.service.editBlog(this.blogId, updatedBlog).subscribe((data) => {
+    this.service.editBlog(this.blogId, updatedBlog).subscribe((editedBlog) => {
       this.router.navigate(['/']);
     });
   }
