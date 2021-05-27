@@ -22,6 +22,13 @@ export class BlogComponent implements OnInit {
     private router: Router
   ) {}
 
+  getTheme(id): void {
+    id = id;
+    this.service.getTheme(id).subscribe((theme) => {
+      console.log(theme);
+    });
+  }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.blogId = parseInt(params.get('id'));
@@ -31,6 +38,7 @@ export class BlogComponent implements OnInit {
         this.userId = blog.userId;
         this.posts = blog.posts;
         this.blogId = blog.id;
+        this.getTheme(this.blogId);
       });
     });
   }

@@ -1,6 +1,7 @@
-<h3>Create a new blog</h3>
+<h2>Create a new blog</h2>
 <form [formGroup]="addBlogForm" (ngSubmit)="createBlog()">
   <input type="text" placeholder="Titel" formControlName="title" />
+  <input type="text" placeholder="Theme" formControlName="theme" />
   <button type="submit" [disabled]="!addBlogForm.valid">Add</button>
 </form>
 <a routerLink="..">Back</a>

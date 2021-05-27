@@ -10,6 +10,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Theme } from 'src/app/models/BlogTheme';
 
 @Component({
   selector: 'app-add-blog',
@@ -23,9 +24,11 @@ export class AddBlogComponent implements OnInit {
   created: Date = new Date();
   userId: number = 930404;
   posts: Post[] = [];
+  theme: string;
 
   addBlogForm = this.fb.group({
     title: ['', Validators.required],
+    theme: [''],
   });
   constructor(
     private service: BlogService,
@@ -35,8 +38,16 @@ export class AddBlogComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  createTheme(blog): void {
+    this.id = blog.id;
+    let t = new Theme(this.id, this.theme);
+    this.service.setTheme(t, this.id);
+    this.router.navigate(['/']);
+  }
+
   createBlog(): void {
     this.title = this.addBlogForm.value.title;
+    this.theme = this.addBlogForm.value.theme;
     let b = new Blog(
       this.id,
       this.title,
@@ -46,7 +57,7 @@ export class AddBlogComponent implements OnInit {
     );
 
     this.service.addBlog(b).subscribe((newBlog) => {
-      this.router.navigate(['/']);
+      this.createTheme(newBlog);
     });
   }
 }

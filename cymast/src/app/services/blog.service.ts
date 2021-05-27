@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Blog } from '../models/Blog';
 import { Post } from '../models/Post';
+import { Theme } from '../models/BlogTheme';
 import { Comment } from '../models/Comment';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +14,7 @@ export class BlogService {
   private blogs = new Subject<Blog[]>();
   blogs$ = this.blogs.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private firestore: AngularFirestore) {}
 
   getBlogs(): void {
     this.http
@@ -28,11 +30,25 @@ export class BlogService {
     );
   }
 
+  getTheme(id: number): Observable<Theme> {
+    return this.firestore
+      .collection('blogTheme')
+      .doc(JSON.stringify(id))
+      .valueChanges();
+  }
+
   addBlog(newBlog: Blog): Observable<Blog> {
     return this.http.post<Blog>(
       'https://mi-blogs.azurewebsites.net/api/Blogs',
       newBlog
     );
+  }
+
+  setTheme(theme: Theme, id: number): void {
+    this.firestore
+      .collection('blogTheme')
+      .doc(JSON.stringify(id))
+      .set(Object.assign({}, theme));
   }
 
   editBlog(id: number, updatedBlog: Blog): Observable<Blog> {
