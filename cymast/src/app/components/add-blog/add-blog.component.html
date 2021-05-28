@@ -1,7 +1,15 @@
 <h2>Create a new blog</h2>
 <form [formGroup]="addBlogForm" (ngSubmit)="createBlog()">
   <input type="text" placeholder="Titel" formControlName="title" />
-  <input type="text" placeholder="Theme" formControlName="theme" />
+
+  <select formControlName="theme">
+    <option>Default</option>
+    <option>PrincessBubblegum</option>
+    <option>RobotsInTheSkies</option>
+    <option>DinoDynamite</option>
+    <option>MrsFancyPants</option>
+  </select>
+
   <button type="submit" [disabled]="!addBlogForm.valid">Add</button>
 </form>
 <a routerLink="..">Back</a>

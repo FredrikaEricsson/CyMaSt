@@ -8,6 +8,7 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { EditBlogComponent } from './components/edit-blog/edit-blog.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
   },
   { path: 'create-blog', component: AddBlogComponent },
   { path: '', component: BlogsComponent },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({

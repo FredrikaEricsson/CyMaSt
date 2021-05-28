@@ -28,7 +28,7 @@ export class AddBlogComponent implements OnInit {
 
   addBlogForm = this.fb.group({
     title: ['', Validators.required],
-    theme: [''],
+    theme: ['', Validators.required],
   });
   constructor(
     private service: BlogService,
@@ -38,7 +38,7 @@ export class AddBlogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  createTheme(blog): void {
+  setTheme(blog): void {
     this.id = blog.id;
     let t = new Theme(this.id, this.theme);
     this.service.setTheme(t, this.id);
@@ -57,7 +57,7 @@ export class AddBlogComponent implements OnInit {
     );
 
     this.service.addBlog(b).subscribe((newBlog) => {
-      this.createTheme(newBlog);
+      this.setTheme(newBlog);
     });
   }
 }

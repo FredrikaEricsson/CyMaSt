@@ -20,6 +20,7 @@ export class CommentsComponent implements OnInit {
   modified: Date;
   blogId: number;
   comments: Comment[] = [];
+  theme: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -28,17 +29,32 @@ export class CommentsComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
+  getTheme(): void {
+    this.service.getTheme(this.blogId).subscribe((theme) => {
+      this.theme = theme.theme;
+      (error) => {
+        this.theme = 'Default';
+      };
+    });
+  }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.id = parseInt(params.get('postId'));
-      this.service.getPost(this.id).subscribe((post) => {
-        this.title = post.title;
-        this.content = post.content;
-        this.created = post.created;
-        this.modified = post.modified;
-        this.blogId = post.blogId;
-        this.comments = post.comments;
-      });
+      this.service.getPost(this.id).subscribe(
+        (post) => {
+          this.title = post.title;
+          this.content = post.content;
+          this.created = post.created;
+          this.modified = post.modified;
+          this.blogId = post.blogId;
+          this.comments = post.comments;
+          this.getTheme();
+        },
+        (error) => {
+          this.router.navigate(['/**']);
+        }
+      );
     });
   }
 }

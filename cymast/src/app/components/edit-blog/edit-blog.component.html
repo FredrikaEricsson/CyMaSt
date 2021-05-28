@@ -2,8 +2,14 @@
 
 <form [formGroup]="editBlogForm" (ngSubmit)="editBlog()">
   <input type="text" formControlName="title" />
-
+  <select formControlName="theme">
+    <option>Default</option>
+    <option>PrincessBubblegum</option>
+    <option>RobotsInTheSkies</option>
+    <option>DinoDynamite</option>
+    <option>MrsFancyPants</option>
+  </select>
   <button type="submit">Save</button>
 </form>
 
-<a routerLink="..">Back</a>
+<a routerLink="/">Back</a>

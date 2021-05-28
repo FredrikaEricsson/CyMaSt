@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from 'src/app/models/Blog';
 import { Post } from 'src/app/models/Post';
 import { BlogService } from 'src/app/services/blog.service';
+import { Url } from 'url';
 
 @Component({
   selector: 'app-blog',
@@ -16,6 +17,7 @@ export class BlogComponent implements OnInit {
   userId: number = 930404;
   posts: Post[] = [];
   blogId: number = 0;
+  theme: string;
   constructor(
     private route: ActivatedRoute,
     private service: BlogService,
@@ -25,21 +27,29 @@ export class BlogComponent implements OnInit {
   getTheme(id): void {
     id = id;
     this.service.getTheme(id).subscribe((theme) => {
-      console.log(theme);
+      this.theme = theme.theme;
+      (error) => {
+        this.theme = 'Default';
+      };
     });
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.blogId = parseInt(params.get('id'));
-      this.service.getBlog(this.blogId).subscribe((blog) => {
-        this.title = blog.title;
-        this.created = blog.created;
-        this.userId = blog.userId;
-        this.posts = blog.posts;
-        this.blogId = blog.id;
-        this.getTheme(this.blogId);
-      });
+      this.service.getBlog(this.blogId).subscribe(
+        (blog) => {
+          this.title = blog.title;
+          this.created = blog.created;
+          this.userId = blog.userId;
+          this.posts = blog.posts;
+          this.blogId = blog.id;
+          this.getTheme(this.blogId);
+        },
+        (error) => {
+          this.router.navigate(['/**']);
+        }
+      );
     });
   }
 }

@@ -20,6 +20,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorComponent } from './components/error/error.component';
 
 const config = {
   apiKey: 'AIzaSyCY7f1h4HDUJ0PJBgffmO9ALsKedrNSJwI',
@@ -43,6 +44,7 @@ const config = {
     CommentsComponent,
     CommentComponent,
     AddCommentComponent,
+    ErrorComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(config),
