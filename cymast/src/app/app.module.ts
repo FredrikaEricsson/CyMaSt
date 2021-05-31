@@ -21,6 +21,7 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorComponent } from './components/error/error.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const config = {
   apiKey: 'AIzaSyCY7f1h4HDUJ0PJBgffmO9ALsKedrNSJwI',
@@ -54,6 +55,7 @@ const config = {
     HttpClientModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,15 +1,16 @@
-<h3>Edit blog</h3>
+<div class="editBlogContainer">
+  <a routerLink="/"><i class="fas fa-arrow-left"></i></a>
+  <h3>Edit blog</h3>
 
-<form [formGroup]="editBlogForm" (ngSubmit)="editBlog()">
-  <input type="text" formControlName="title" />
-  <select formControlName="theme">
-    <option>Default</option>
-    <option>PrincessBubblegum</option>
-    <option>RobotsInTheSkies</option>
-    <option>DinoDynamite</option>
-    <option>MrsFancyPants</option>
-  </select>
-  <button type="submit">Save</button>
-</form>
-
-<a routerLink="/">Back</a>
+  <form [formGroup]="editBlogForm" (ngSubmit)="editBlog()">
+    <input type="text" formControlName="title" />
+    <select formControlName="theme">
+      <option>Default</option>
+      <option>PrincessBubblegum</option>
+      <option>RobotsInTheSkies</option>
+      <option>DinoDynamite</option>
+      <option>MrsFancyPants</option>
+    </select>
+    <button type="submit">Save</button>
+  </form>
+</div>

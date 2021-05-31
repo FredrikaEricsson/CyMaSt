@@ -1,0 +1,85 @@
+@import "src/assets/mixins";
+@import "src/assets/variables";
+
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  font-family: Arial, Helvetica, sans-serif;
+  .blogsContainer {
+    background-color: grey;
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+
+    .blogs {
+      border: magenta solid 1px;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .blogsHeadline {
+        border: green solid 1px;
+        width: 40%;
+      }
+      .blogList {
+        border: blue solid 1px;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        list-style: none;
+        padding: 0%;
+
+        .blogItem {
+          border: yellow solid 1px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          a {
+            text-decoration: none;
+            color: black;
+          }
+
+          .blogButtons {
+            border: indianred solid 1px;
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+    .addBlog {
+      border: chartreuse solid 1px;
+      display: flex;
+      height: auto;
+      justify-content: flex-end;
+      button {
+        margin: 1%;
+        a {
+          font-size: 30px;
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+  }
+  .presentationContainer {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 87.5vh;
+    width: 80%;
+
+    .logoImage {
+      width: 50%;
+    }
+    .presentationText {
+      width: 50%;
+      text-align: end;
+    }
+  }
+}

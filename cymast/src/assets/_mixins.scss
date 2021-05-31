@@ -1,0 +1,58 @@
+@import "./fonts";
+
+@mixin blogLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+@mixin postLayout {
+  width: 90%;
+  margin: 3%;
+}
+
+@mixin defaultThemeBlog {
+  font-family: $default-font;
+  background-color: beige;
+  width: 90vw;
+  height: 100vh;
+}
+@mixin defaultThemePost {
+  font-family: $default-font;
+  background-color: beige;
+}
+
+@mixin princessBubblegumBlog {
+  font-family: $princess-font;
+  background-color: lightpink;
+  width: 90vw;
+  height: 100vh;
+}
+@mixin princessBubblegumPost {
+  background-color: papayawhip;
+}
+
+@mixin robotBlog {
+  font-family: $robot-font;
+  background-color: red;
+  width: 90vw;
+  height: 100vh;
+}
+
+@mixin robotPost {
+  font-family: $robot-font;
+  background-color: red;
+}
+
+@mixin dinoBlog {
+  font-family: $dino-font;
+  background-color: lightgreen;
+  width: 90vw;
+  height: 100vh;
+}
+
+@mixin dinoPost {
+  font-family: $dino-font;
+  background-color: lightgreen;
+}

@@ -1,7 +1,7 @@
 <h3>{{ post.title }}</h3>
 <p>{{ post.content }}</p>
-<span>{{ post.created }}</span>
-<span>{{ post.modified }}</span>
+<span>Created: {{ post.created }}</span>
+<span>Modified: {{ post.modified }}</span>
 
 <a [routerLink]="['./post', post.id, 'comments']" routerLinkActive="active"
   >Comments({{ post.comments.length }})</a

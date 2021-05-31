@@ -1,0 +1,18 @@
+.newPostContainer {
+  font-family: Arial, Helvetica, sans-serif;
+  .addPostForm {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+    }
+    .content {
+      height: 200px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .button {
+      width: fit-content;
+      align-self: flex-end;
+    }
+  }
+}

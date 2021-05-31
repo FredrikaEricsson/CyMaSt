@@ -1,11 +1,28 @@
-<div class="{{ theme }}">
-  <h2>{{ title }}</h2>
-
-  <a [routerLink]="['/blog', blogId, 'new-post']" routerLinkActive="active"
-    >New Post</a
-  >
-  <div *ngFor="let p of posts; let i = index">
-    <app-post [post]="p" [index]="i"> </app-post>
+<div class="blogPageContainer">
+  <div class="links">
+    <button><a routerLink="/">Back</a></button
+    ><button>
+      <a [routerLink]="['/blog', blogId, 'new-post']" routerLinkActive="active"
+        >New Post</a
+      >
+    </button>
   </div>
-  <a routerLink="/">Back</a>
+  <div class="blogContainer">
+    <div class="{{ theme }}">
+      <h1 class="blogName">{{ title }}</h1>
+      <div *ngIf="!posts?.length">
+        You have no posts yet
+        <button>
+          <a
+            [routerLink]="['/blog', blogId, 'new-post']"
+            routerLinkActive="active"
+            >New Post</a
+          >
+        </button>
+      </div>
+      <div class="post" *ngFor="let p of posts; let i = index">
+        <app-post [post]="p" [index]="i"> </app-post>
+      </div>
+    </div>
+  </div>
 </div>

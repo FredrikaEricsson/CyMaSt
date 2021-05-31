@@ -1,14 +1,39 @@
-<button>
-  <a [routerLink]="['/create-blog']" routerLinkActive="active">New blog</a>
-</button>
-
-<h3>Your blogs</h3>
-<ul>
-  <li *ngFor="let b of blogs; let i = index">
-    <a [routerLink]="['/blog', b.id]" routerLinkActive="active">{{
-      b.title
-    }}</a>
-    - <button (click)="deleteBlog(b.id)">Delete</button>
-    <a [routerLink]="['/edit-blog', b.id]" routerLinkActive="active">Edit</a>
-  </li>
-</ul>
+<div class="mainContainer">
+  <div class="blogsContainer">
+    <div class="blogs">
+      <h2 class="blogsHeadline">Your blogs</h2>
+      <ul class="blogList">
+        <li class="blogItem" *ngFor="let b of blogs; let i = index">
+          <a [routerLink]="['/blog', b.id]" routerLinkActive="active">{{
+            b.title
+          }}</a>
+          <div class="blogButtons">
+            <button (click)="deleteBlog(b.id)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            <button>
+              <a [routerLink]="['/edit-blog', b.id]" routerLinkActive="active"
+                ><i class="fas fa-edit"></i
+              ></a>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="addBlog">
+      <button>
+        <a [routerLink]="['/create-blog']" routerLinkActive="active"
+          ><i class="fas fa-plus"></i
+        ></a>
+      </button>
+    </div>
+  </div>
+  <div class="presentationContainer">
+    <img class="logoImage" src="../../../assets/logo.jpg" />
+    <span class="presentationText"
+      >Welcome to Cyborg, Marshmallow, Stegasaurus (CyMaSt for short), the
+      number one (ish) content management system on the web! Choose an existing
+      blog from the list, or click the + to create a new one!
+    </span>
+  </div>
+</div>

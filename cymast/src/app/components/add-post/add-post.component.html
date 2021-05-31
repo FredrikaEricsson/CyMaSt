@@ -1,8 +1,22 @@
-<h2>Write a new post!</h2>
+<div class="newPostContainer">
+  <h2>Write a new post!</h2>
 
-<form [formGroup]="addPostForm" (ngSubmit)="createPost()">
-  <input type="text" placeholder="Titel" formControlName="title" />
-  <input type="text" placeholder="Innehåll" formControlName="content" />
-  <button type="submit" [disabled]="!addPostForm.valid">Add</button>
-</form>
-<a routerLink="..">Back</a>
+  <form class="addPostForm" [formGroup]="addPostForm" (ngSubmit)="createPost()">
+    <input
+      class="title"
+      type="text"
+      placeholder="Titel"
+      formControlName="title"
+    />
+    <textarea
+      class="content"
+      type="text"
+      placeholder="Innehåll"
+      formControlName="content"
+    ></textarea>
+    <button class="button" type="submit" [disabled]="!addPostForm.valid">
+      Add
+    </button>
+  </form>
+  <a routerLink="..">Back</a>
+</div>
