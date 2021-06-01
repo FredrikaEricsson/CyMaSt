@@ -26,8 +26,8 @@ export class EditBlogComponent implements OnInit {
   blogId: number = 0;
   theme: string = '';
   editBlogForm = this.fb.group({
-    title: [''],
-    theme: ['Default'],
+    title: ['', Validators.required],
+    theme: ['Default', Validators.required],
   });
   constructor(
     private route: ActivatedRoute,

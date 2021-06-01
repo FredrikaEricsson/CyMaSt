@@ -1,7 +1,7 @@
 <div class="blogPageContainer">
   <div class="links">
-    <button><a routerLink="/">Back</a></button
-    ><button>
+    <a routerLink="/"><i class="fas fa-arrow-left"></i></a>
+    <button>
       <a [routerLink]="['/blog', blogId, 'new-post']" routerLinkActive="active"
         >New Post</a
       >
@@ -11,14 +11,7 @@
     <div class="{{ theme }}">
       <h1 class="blogName">{{ title }}</h1>
       <div *ngIf="!posts?.length">
-        You have no posts yet
-        <button>
-          <a
-            [routerLink]="['/blog', blogId, 'new-post']"
-            routerLinkActive="active"
-            >New Post</a
-          >
-        </button>
+        You have no posts yet! Add one up there <i class="fas fa-arrow-up"></i>
       </div>
       <div class="post" *ngFor="let p of posts; let i = index">
         <app-post [post]="p" [index]="i"> </app-post>

@@ -1,8 +1,43 @@
+@import "src/assets/mixins";
 .newBlogContainer {
-  .headline {
-    font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  a {
+    @include linkStyle;
   }
 
-  .addBlogForm {
+  .createBlogContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .headline {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .addBlogForm {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      input {
+        @include inputStyle;
+        width: fit-content;
+      }
+      select {
+        @include inputStyle;
+        width: fit-content;
+      }
+      button {
+        @include buttonStyle;
+        width: fit-content;
+      }
+      button:disabled {
+        @include buttonStyleDisabled;
+      }
+    }
   }
 }

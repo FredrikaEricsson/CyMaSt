@@ -6,7 +6,13 @@
   .links {
     display: flex;
     justify-content: space-between;
-    margin: 4%;
+    margin: 1% 5%;
+    button {
+      @include buttonStyle;
+    }
+    a {
+      @include linkStyle;
+    }
   }
   .blogContainer {
     display: flex;
@@ -31,6 +37,9 @@
 
       .blogName {
         text-align: center;
+      }
+      button {
+        @include buttonStyle;
       }
       .post {
         @include postLayout;

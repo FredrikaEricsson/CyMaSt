@@ -1,20 +1,106 @@
-.Default {
-  background-color: white;
-  color: thistle;
-}
+@import "src/assets/mixins";
 
-.PrincessBubblegum {
-  background-color: palevioletred;
-}
+.commentsPageContainer {
+  margin-top: 1%;
+  .back {
+    @include linkStyle;
+    margin-left: 5%;
+  }
 
-.RobotsInTheSkies {
-  background-color: red;
-}
+  .postContainer {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.DinoDynamite {
-  background-color: green;
-}
+    .Default {
+      @include blogLayout;
+      @include defaultThemeBlog;
 
-.MrsFancyPants {
-  background-color: lightblue;
+      .post {
+        @include postLayout;
+        @include defaultThemePost;
+        margin-top: 3%;
+        margin-bottom: 0%;
+      }
+      .comments {
+        @include postLayout;
+        @include defaultThemePost;
+        display: flex;
+        align-self: center;
+        margin-bottom: 2%;
+      }
+    }
+
+    .PrincessBubblegum {
+      @include blogLayout;
+      @include princessBubblegumBlog;
+      display: flex;
+
+      .post {
+        @include postLayout;
+        @include princessBubblegumPost;
+        margin-top: 3%;
+        margin-bottom: 0%;
+      }
+      .comments {
+        @include postLayout;
+        @include princessBubblegumPost;
+        display: flex;
+        align-self: center;
+        margin-bottom: 2%;
+      }
+    }
+
+    .RobotsInTheSkies {
+      @include blogLayout;
+      @include robotBlog;
+
+      .post {
+        @include postLayout;
+        @include robotPost;
+        margin-top: 3%;
+        margin-bottom: 0%;
+      }
+      .comments {
+        @include postLayout;
+        @include robotPost;
+        display: flex;
+        align-self: center;
+        margin-bottom: 2%;
+      }
+    }
+
+    .DinoDynamite {
+      @include blogLayout;
+      @include dinoBlog;
+
+      .post {
+        @include postLayout;
+        @include dinoPost;
+        margin-top: 3%;
+        margin-bottom: 0%;
+      }
+      .comments {
+        @include postLayout;
+        @include dinoPost;
+        display: flex;
+        align-self: center;
+        margin-bottom: 2%;
+      }
+    }
+  }
+
+  .commentContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .commentsHeadline {
+      text-align: center;
+    }
+    .noComments {
+      text-align: center;
+    }
+  }
 }

@@ -1,16 +1,23 @@
 <div class="newBlogContainer">
   <a routerLink=".."><i class="fas fa-arrow-left"></i></a>
-  <h2 class="headline">Create a new blog</h2>
-  <form class="addBlogForm" [formGroup]="addBlogForm" (ngSubmit)="createBlog()">
-    <input type="text" placeholder="Titel" formControlName="title" />
+  <div class="createBlogContainer">
+    <h1 class="headline">Create a new blog</h1>
+    <form
+      class="addBlogForm"
+      [formGroup]="addBlogForm"
+      (ngSubmit)="createBlog()"
+    >
+      <label for="title">Pick a name for your blog!</label>
+      <input type="text" formControlName="title" id="title" />
+      <label for="title">Choose a theme!</label>
+      <select formControlName="theme" id="theme">
+        <option>Default</option>
+        <option>PrincessBubblegum</option>
+        <option>RobotsInTheSkies</option>
+        <option>DinoDynamite</option>
+      </select>
 
-    <select formControlName="theme">
-      <option>Default</option>
-      <option>PrincessBubblegum</option>
-      <option>RobotsInTheSkies</option>
-      <option>DinoDynamite</option>
-    </select>
-
-    <button type="submit" [disabled]="!addBlogForm.valid">Add</button>
-  </form>
+      <button type="submit" [disabled]="!addBlogForm.valid">Add</button>
+    </form>
+  </div>
 </div>

@@ -1,3 +1,38 @@
+@import "src/assets/mixins";
+
 .editBlogContainer {
+  display: flex;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
+  a {
+    @include linkStyle;
+  }
+
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .editBlogForm {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        @include inputStyle;
+        width: fit-content;
+      }
+      select {
+        @include inputStyle;
+        width: fit-content;
+      }
+      button {
+        @include buttonStyle;
+        width: fit-content;
+      }
+      button:disabled {
+        @include buttonStyleDisabled;
+      }
+    }
+  }
 }

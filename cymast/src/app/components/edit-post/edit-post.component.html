@@ -1,9 +1,20 @@
-<h3>Edit post</h3>
+<div class="editPostPageContainer">
+  <a routerLink="/blog/{{ blogId }}"><i class="fas fa-arrow-left"></i></a>
+  <div class="editPostContainer">
+    <h1>Edit post</h1>
 
-<form [formGroup]="editPostForm" (ngSubmit)="editPost()">
-  <input type="text" formControlName="title" />
-  <input type="text" formControlName="content" />
-  <button type="Save">Save</button>
-</form>
-
-<a routerLink="..">Back</a>
+    <form
+      class="editPostForm"
+      [formGroup]="editPostForm"
+      (ngSubmit)="editPost()"
+    >
+      <input class="title" type="text" formControlName="title" />
+      <textarea
+        class="content"
+        type="text"
+        formControlName="content"
+      ></textarea>
+      <button type="submit" [disabled]="!editPostForm.valid">Save</button>
+    </form>
+  </div>
+</div>

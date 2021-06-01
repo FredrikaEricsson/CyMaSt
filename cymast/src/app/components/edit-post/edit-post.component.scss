@@ -1,0 +1,39 @@
+@import "src/assets/mixins";
+.editPostPageContainer {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  a {
+    @include linkStyle;
+  }
+  .editPostContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .editPostForm {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        @include inputStyle;
+        width: fit-content;
+      }
+      .content {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 200px;
+        width: 500px;
+        @include inputStyle;
+      }
+      button {
+        @include buttonStyle;
+        width: fit-content;
+      }
+
+      button:disabled {
+        @include buttonStyleDisabled;
+      }
+    }
+  }
+}

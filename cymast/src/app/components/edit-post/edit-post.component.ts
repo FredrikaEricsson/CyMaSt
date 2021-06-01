@@ -28,8 +28,8 @@ export class EditPostComponent implements OnInit {
   comments: Comment[] = [];
 
   editPostForm = this.fb.group({
-    title: [''],
-    content: [''],
+    title: ['', Validators.required],
+    content: ['', Validators.required],
   });
   constructor(
     private route: ActivatedRoute,

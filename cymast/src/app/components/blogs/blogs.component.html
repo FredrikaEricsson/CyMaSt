@@ -3,19 +3,20 @@
     <div class="blogs">
       <h2 class="blogsHeadline">Your blogs</h2>
       <ul class="blogList">
+        <div *ngIf="!blogs?.length">You have no blogs yet</div>
         <li class="blogItem" *ngFor="let b of blogs; let i = index">
           <a [routerLink]="['/blog', b.id]" routerLinkActive="active">{{
             b.title
           }}</a>
           <div class="blogButtons">
-            <button (click)="deleteBlog(b.id)">
+            <div (click)="deleteBlog(b.id)">
               <i class="fas fa-trash-alt"></i>
-            </button>
-            <button>
+            </div>
+            <div>
               <a [routerLink]="['/edit-blog', b.id]" routerLinkActive="active"
                 ><i class="fas fa-edit"></i
               ></a>
-            </button>
+            </div>
           </div>
         </li>
       </ul>

@@ -1,11 +1,20 @@
-<h3>{{ post.title }}</h3>
-<p>{{ post.content }}</p>
-<span>Created: {{ post.created }}</span>
-<span>Modified: {{ post.modified }}</span>
+<div class="postTitle">
+  <h2>{{ post.title }}</h2>
+  <span class="created">{{ post.created | date: "short" }}</span>
+</div>
+<p class="content">{{ post.content }}</p>
 
-<a [routerLink]="['./post', post.id, 'comments']" routerLinkActive="active"
-  >Comments({{ post.comments.length }})</a
->
-
-<a [routerLink]="['./edit-post', post.id]" routerLinkActive="active">Edit</a>
-<button (click)="deletePost(post.id)">Delete</button>
+<div class="postContainer">
+  <a
+    class="comments"
+    [routerLink]="['./post', post.id, 'comments']"
+    routerLinkActive="active"
+    >Comments({{ post.comments.length }})</a
+  >
+  <div class="editDelete">
+    <a [routerLink]="['./edit-post', post.id]" routerLinkActive="active"
+      ><i class="fas fa-edit"></i
+    ></a>
+    <div (click)="deletePost(post.id)"><i class="fas fa-trash-alt"></i></div>
+  </div>
+</div>

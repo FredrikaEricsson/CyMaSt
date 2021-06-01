@@ -1,1 +1,40 @@
+@import "src/assets/mixins";
 
+.postTitle {
+  text-align: center;
+
+  h2 {
+    margin-bottom: 0%;
+  }
+  .created {
+    font-size: 0.75em;
+  }
+}
+
+.content {
+  margin: 5% 5%;
+}
+
+.postContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0% 4%;
+  .comments {
+    @include linkStyle;
+    text-decoration: underline;
+    padding: 0%;
+    font-size: 0.75em;
+  }
+  .editDelete {
+    display: flex;
+    flex-direction: row;
+    width: 7%;
+    justify-content: space-between;
+    a {
+      @include linkStyle;
+    }
+    div {
+      @include linkStyle;
+    }
+  }
+}

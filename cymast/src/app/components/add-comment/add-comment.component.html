@@ -1,5 +1,13 @@
-<h2>Write a comment!</h2>
-<form [formGroup]="addCommentForm" (ngSubmit)="createComment()">
-  <input type="text" placeholder="Innehåll" formControlName="content" />
-  <button type="submit" [disabled]="!addCommentForm.valid">Add</button>
+<h4 class="writeCommentHeadline">Write a comment!</h4>
+<form
+  class="addCommentForm"
+  [formGroup]="addCommentForm"
+  (ngSubmit)="createComment()"
+>
+  <textarea
+    type="text"
+    placeholder="Innehåll"
+    formControlName="content"
+  ></textarea>
+  <button type="submit" [disabled]="!addCommentForm.valid">Post Comment</button>
 </form>

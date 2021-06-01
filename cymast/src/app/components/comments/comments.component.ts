@@ -14,13 +14,10 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class CommentsComponent implements OnInit {
   id: number;
-  title: string;
-  content: string;
-  created: Date;
-  modified: Date;
   blogId: number;
   comments: Comment[] = [];
   theme: string = '';
+  post: Post;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,12 +40,9 @@ export class CommentsComponent implements OnInit {
       this.id = parseInt(params.get('postId'));
       this.service.getPost(this.id).subscribe(
         (post) => {
-          this.title = post.title;
-          this.content = post.content;
-          this.created = post.created;
-          this.modified = post.modified;
           this.blogId = post.blogId;
           this.comments = post.comments;
+          this.post = post;
           this.getTheme();
         },
         (error) => {

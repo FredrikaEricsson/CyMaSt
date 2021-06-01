@@ -1,18 +1,39 @@
+@import "src/assets/mixins";
+
 .newPostContainer {
   font-family: Arial, Helvetica, sans-serif;
-  .addPostForm {
+  display: flex;
+  flex-direction: column;
+  a {
+    @include linkStyle;
+  }
+
+  .addPostContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .addPostForm {
+      display: flex;
+      flex-direction: column;
 
-    .title {
-    }
-    .content {
-      height: 200px;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    .button {
-      width: fit-content;
-      align-self: flex-end;
+      .title {
+        @include inputStyle;
+        width: fit-content;
+      }
+      .content {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 200px;
+        width: 500px;
+        @include inputStyle;
+      }
+      .button {
+        @include buttonStyle;
+        width: fit-content;
+      }
+      button:disabled {
+        @include buttonStyleDisabled;
+      }
     }
   }
 }
