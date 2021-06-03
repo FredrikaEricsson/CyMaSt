@@ -1,15 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { Blog } from 'src/app/models/Blog';
-import { Post } from 'src/app/models/Post';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Comment } from 'src/app/models/Comment';
 import { BlogService } from 'src/app/services/blog.service';
 

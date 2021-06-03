@@ -5,11 +5,14 @@
       <ul class="blogList">
         <div *ngIf="!blogs?.length">You have no blogs yet</div>
         <li class="blogItem" *ngFor="let b of blogs; let i = index">
-          <a [routerLink]="['/blog', b.id]" routerLinkActive="active">{{
-            b.title
-          }}</a>
+          <a
+            class="blogLink"
+            [routerLink]="['/blog', b.id]"
+            routerLinkActive="active"
+            >{{ b.title }}</a
+          >
           <div class="blogButtons">
-            <div (click)="deleteBlog(b.id)">
+            <div class="delete" (click)="deleteBlog(b.id)">
               <i class="fas fa-trash-alt"></i>
             </div>
             <div>

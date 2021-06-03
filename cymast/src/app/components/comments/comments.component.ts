@@ -17,7 +17,15 @@ export class CommentsComponent implements OnInit {
   blogId: number;
   comments: Comment[] = [];
   theme: string = '';
-  post: Post;
+  post: Post = {
+    title: '',
+    id: 0,
+    content: '',
+    created: new Date(),
+    modified: new Date(),
+    blogId: 0,
+    comments: [],
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +44,7 @@ export class CommentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.post);
     this.route.paramMap.subscribe((params) => {
       this.id = parseInt(params.get('postId'));
       this.service.getPost(this.id).subscribe(

@@ -10,7 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PostComponent implements OnInit {
   @Input() post: Post;
-
   index: number;
 
   constructor(private service: BlogService, private router: Router) {}

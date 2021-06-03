@@ -1,5 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AngularFirestore } from '@angular/fire/firestore';
+import { FireStoreStub } from 'src/app/services/MockBlogService';
 import { BlogComponent } from './blog.component';
 
 describe('BlogComponent', () => {
@@ -8,9 +11,10 @@ describe('BlogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BlogComponent ]
-    })
-    .compileComponents();
+      declarations: [BlogComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      providers: [{ provide: AngularFirestore, useValue: FireStoreStub }],
+    }).compileComponents();
   });
 
   beforeEach(() => {
