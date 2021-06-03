@@ -12,6 +12,7 @@
     }
     a {
       @include linkStyle;
+      cursor: pointer;
     }
   }
   .blogContainer {
