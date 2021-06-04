@@ -4,7 +4,7 @@
 </div>
 <p class="content">{{ post.content }}</p>
 
-<div class="postContainer">
+<div class="postContainer" *ngIf="!router.url.includes('comments')">
   <a
     class="comments"
     [routerLink]="['./post', post.id, 'comments']"

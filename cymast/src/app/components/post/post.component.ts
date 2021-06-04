@@ -12,7 +12,7 @@ export class PostComponent implements OnInit {
   @Input() post: Post;
   index: number;
 
-  constructor(private service: BlogService, private router: Router) {}
+  constructor(private service: BlogService, public router: Router) {}
 
   ngOnInit(): void {}
 
