@@ -20,6 +20,9 @@
   font-size: 2em;
   background-color: $default-primary;
   width: 90vw;
+  @media only screen and (max-width: 600px) {
+    font-size: 1em;
+  }
 }
 @mixin defaultThemePost {
   font-family: $default-font;
@@ -31,6 +34,9 @@
   font-size: 2em;
   background-color: $princess-primary;
   width: 90vw;
+  @media only screen and (max-width: 600px) {
+    font-size: 1em;
+  }
 }
 @mixin princessBubblegumPost {
   background-color: $princess-secondary;
@@ -43,6 +49,9 @@
   font-size: 2em;
   background-color: $robot-primary;
   width: 90vw;
+  @media only screen and (max-width: 600px) {
+    font-size: 1em;
+  }
 }
 
 @mixin robotPost {
@@ -55,6 +64,9 @@
   font-size: 2em;
   background-color: $dino-primary;
   width: 90vw;
+  @media only screen and (max-width: 600px) {
+    font-size: 1em;
+  }
 }
 
 @mixin dinoPost {
@@ -73,8 +85,7 @@
 }
 
 @mixin buttonStyle {
-  font-size: 16px;
-  font-size: max(16px, 1em);
+  font-size: 1em;
   padding: 0.25em 0.5em;
   background-color: $default-secondary;
   border: 2px solid #8b8a8b;
@@ -83,8 +94,7 @@
 }
 
 @mixin buttonStyleDisabled {
-  font-size: 16px;
-  font-size: max(16px, 1em);
+  font-size: 1em;
   padding: 0.25em 0.5em;
   background-color: $default-primary;
   border: 2px solid #bebcbe;
@@ -94,7 +104,10 @@
 
 @mixin linkStyle {
   padding: 0.25em 0.5em;
-  font-size: 25px;
+  font-size: 2em;
   color: black;
   text-decoration: none;
+  @media only screen and (max-width: 600px) {
+    font-size: 1em;
+  }
 }

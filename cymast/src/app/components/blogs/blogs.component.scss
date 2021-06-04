@@ -6,12 +6,19 @@
   flex-direction: row;
   font-family: Arial, Helvetica, sans-serif;
   height: 87vh;
+  @media only screen and (max-width: 600px) {
+    height: 100vh;
+  }
+
   .blogsContainer {
     background-color: $default-secondary;
     height: 100%;
     width: 40%;
     display: flex;
     flex-direction: column;
+    @media only screen and (max-width: 600px) {
+      width: 60%;
+    }
 
     .blogs {
       height: 80vh;
@@ -22,6 +29,9 @@
       .blogsHeadline {
         width: fit-content;
         font-size: 2.5em;
+        @media only screen and (max-width: 600px) {
+          font-size: 1.5em;
+        }
       }
       .blogList {
         display: flex;
@@ -37,7 +47,7 @@
 
           a {
             @include linkStyle;
-            width: 220px;
+            width: 50%;
             overflow: hidden;
             text-overflow: ellipsis;
           }
@@ -45,9 +55,14 @@
           .blogButtons {
             display: flex;
             flex-direction: row;
+            width: 50%;
+            font-size: 1em;
             div {
               @include linkStyle;
               cursor: pointer;
+            }
+            a {
+              font-size: 1em;
             }
           }
         }
@@ -76,14 +91,24 @@
     align-items: center;
     height: 100%;
     width: 80%;
+    @media only screen and (max-width: 600px) {
+      width: 50%;
+    }
 
     .logoImage {
       width: 50%;
+      @media only screen and (max-width: 600px) {
+        width: 90%;
+      }
     }
     .presentationText {
       width: 50%;
       text-align: end;
       font-size: 1.5em;
+      @media only screen and (max-width: 600px) {
+        font-size: 0.75em;
+        width: 90%;
+      }
     }
   }
 }
